@@ -12,8 +12,12 @@ public class ContentService implements IBoardService {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		
 		int bId = Integer.parseInt(request.getParameter("bId"));
+		
 		BoardDAO dao = BoardDAO.getInstance();
+		dao.upHit(bId);
 		BoardVO vo = dao.contentBoard(bId);
+		
+		vo.setContent(vo.getContent().replace("\r\n", "<br>"));
 		
 		request.setAttribute("content", vo);
 	}
