@@ -14,6 +14,7 @@ import com.myweb.board.service.GetListService;
 import com.myweb.board.service.IBoardService;
 import com.myweb.board.service.ModifyService;
 import com.myweb.board.service.RegistService;
+import com.myweb.board.service.UpdateService;
 
 
 @WebServlet("*.board")
@@ -105,7 +106,11 @@ public class BoardController extends HttpServlet {
 			System.out.println("글 수정 요청이 들어옴!");
 			sv = new UpdateService();
 			sv.execute(request, response);
-		
+			
+			response.sendRedirect("/MyWeb/content.board?bId=" + request.getParameter("bId"));
+			break;
+			
+			
 		}
 	
 	}
