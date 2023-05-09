@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.myweb.board.service.ContentService;
 import com.myweb.board.service.GetListService;
 import com.myweb.board.service.IBoardService;
+import com.myweb.board.service.ModifyService;
 import com.myweb.board.service.RegistService;
 
 
@@ -90,6 +91,20 @@ public class BoardController extends HttpServlet {
 			dp = request.getRequestDispatcher("board/board_content.jsp");
 			dp.forward(request, response);
 			break;
+			
+		case "modify":
+			System.out.println("글 수정 페이지로 이동 요청!");
+			sv = new ModifyService();
+			sv.execute(request, response);
+			
+			dp = request.getRequestDispatcher("board/board_modify.jsp");
+			dp.forward(request, response);
+			break;
+			
+		case "update":
+			System.out.println("글 수정 요청이 들어옴!");
+			sv = new UpdateService();
+			sv.execute(request, response);
 		
 		}
 	
