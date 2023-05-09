@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.myweb.board.service.ContentService;
+import com.myweb.board.service.DeleteService;
 import com.myweb.board.service.GetListService;
 import com.myweb.board.service.IBoardService;
 import com.myweb.board.service.ModifyService;
@@ -110,6 +111,12 @@ public class BoardController extends HttpServlet {
 			response.sendRedirect("/MyWeb/content.board?bId=" + request.getParameter("bId"));
 			break;
 			
+		case "delete":
+			System.out.println("글 삭제 요청이 들어옴!");
+			sv = new DeleteService();
+			sv.execute(request, response);
+			response.sendRedirect("/MyWeb/list.board");
+			break;
 			
 		}
 	
