@@ -61,7 +61,7 @@
 						<td>${b.boardId}</td>
 						<td>${b.writer}</td>
 						<td>
-							<a href="/MyWeb/content.board?bId=${b.boardId}">${b.title}</a>
+							<a href="/MyWeb/content.board?bId=${b.boardId}&page=${pc.paging.page}&cpp=${pc.paging.cpp}">${b.title}</a>
 						</td>
 						<td>
 							<fmt:parseDate value="${b.regDate}" pattern="yyyy-MM-dd'T'HH:mm:ss" var="parsedDateTime" type="both" />
@@ -90,7 +90,7 @@
    						<c:forEach var="pageNum" begin="${pc.beginPage}" end="${pc.endPage}">
 	                        <li class="page-item">
 	                        <a href="/MyWeb/list.board?page=${pageNum}&cpp=${pc.paging.cpp}" class="page-link"
-	                           style="margin-top: 0; height: 40px; color: pink; border: 1px solid #643691; ''}">${pageNum}</a>
+	                           style="margin-top: 0; height: 40px; color: pink; border: 1px solid #643691; ${pageNum == pc.paging.page ? 'background-color: orange' : ''}">${pageNum}</a>
 	                        </li>
                			</c:forEach>
 
